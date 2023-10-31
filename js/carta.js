@@ -23,6 +23,6 @@ export default class Carta {
     }
   
     toString() {
-      return +this._nombre+ " de " +this._palo;
+      return this._palo+ " de " +this._nombre;
     }
   }

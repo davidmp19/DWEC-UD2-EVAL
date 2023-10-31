@@ -9,8 +9,6 @@ export default class Partida {
     this._filas *= 1;
     this._columnas = prompt("Indica el numero de columnas, el minimo es 4");
     this._columnas *= 1;
-    //primero hago un if para saber si algo esta mal, y luego lo separo por si uno esta bien mantenerlo,
-    //y cambiar el que esta mal.
     if (filas < 4||columnas < 4) {
       if(filas < 4){
         this._filas = 4;
@@ -29,26 +27,26 @@ export default class Partida {
     selecciona() {
       var i = 0;
       const cuantasVeces = (this._columnas * this._filas)-1;
-      const nombres = ['A', '2', '3', '4', '5', '6', '7', '8', '9', 'J', 'Q', 'K'];
-      const palos = ['PICAS', 'TREBOLES', 'CORAZONES', 'DIAMANTES'];
+      const nombres = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "J", "Q","K"];
+      const palos = ["Picas", "Treboles", "Corazones", "Diamantes"];
       const cartasSeleccionadas = [];
       while(i<=cuantasVeces){
         var numeroPalo = Math.floor(Math.random()*3);
         var numeroNombre = Math.floor(Math.random()*12);
-        const cartaUno = new Carta(nombres[numeroNombre],palos[numeroPalo]);
-        this._cartasSeleccionadas.push(cartaUno);
+        const carta1 = new Carta(nombres[numeroNombre],palos[numeroPalo]);
+        this._cartasSeleccionadas.push(carta1);
         i++;
-        this._cartasSeleccionadas.push(cartaUno);
+        this._cartasSeleccionadas.push(carta1);
         i++;
       }
     }
 
-    compararAleatoriamente() {
+    comparacionAleatoria() {
       return Math.random() - 0.5;
     }
   
     baraja(){
-      this._cartasSeleccionadas.sort(this.compararAleatoriamente);
+      this._cartasSeleccionadas.sort(this.comparacionAleatoria);
     }
     reparte(){
       this._mazo = new Array(this._filas);
@@ -90,7 +88,7 @@ export default class Partida {
       return devolver;
     }
 
-    haFinalizado(){
+    finPartida(){
       var devolver = false;
       if(this._aciertos == this._cartasSeleccionadas.length/2){
         devolver = true;
@@ -115,3 +113,21 @@ export default class Partida {
       return this._mazo;
     }
   }
+  /** 
+  function mostrarTabla() {
+    var codigoHTML = "<table border=1>";
+    for (var i = 0; i < partida.getFilas(); i++) {
+      codigoHTML += "<tr>";
+      for (var j = 0; j < partida.getColumnas(); j++) {
+        if (partida.getMazo()[i][j] === null) {
+          codigoHTML += "<td></td>";
+        } else {
+          codigoHTML += "<td><br>" + partida.getMazo()[i][j] + "<br></td>";
+        }
+      }
+      codigoHTML += "</tr>";
+    }
+    codigoHTML += "</table>";
+    document.getElementById("mazo").innerHTML = codigoHTML;
+  }
+  */

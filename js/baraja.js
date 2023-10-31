@@ -54,8 +54,8 @@ export default class Baraja {
     toString() {
       for (var i = 0; i < this._baraja.length; i++) {
         for (var j = 0; j < this._baraja[i].length; j++) {
-          console.log(this._baraja[i][j].toString());
-        }
+          console.log(this._baraja[i][j].toString())
       }
+    }
     }
   }
